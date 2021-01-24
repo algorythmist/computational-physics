@@ -1,4 +1,4 @@
-# griffiths-qm
-Jupyter notebook for some problems in Quantum Mechanics
+# Introduction to Quantum Mechanics - Griffiths
+Jupyter notebook for some of the problems in the book
 
-[Here](griffith.ipynb)
+[Click here for the notebook](griffith.ipynb)
