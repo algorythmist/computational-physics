@@ -1,6 +1,9 @@
 # Computational Physics Explorations
 
 ## Notebooks
+
+[Ordinary Differential Equaltions](odes.ipynb)
+
 [Introduction to Quantum Mechanics - Griffiths](griffith.ipynb)
 
 ## Setup
