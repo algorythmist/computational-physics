@@ -10,6 +10,8 @@
 
 ## Setup
 
+### Virtual Environment
+
 >> mkdir venv
 >>
 >> python -m venv venv
@@ -23,5 +25,15 @@
 >> ipython kernel install --name "computational-physics" --user
 >>
 >>jupyter notebook
+
+### Anaconda Environment
+
+>> conda activate computational-physics
+>>
+>> conda install --file requirements.txt
+>>
+>> ipython kernel install --name "computational-physics" --user
+
+
 
 
