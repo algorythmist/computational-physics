@@ -1,5 +1,8 @@
+imageio
 jupyterlab
 matplotlib
 numpy
+pandas
 plotly
+scipy
 sympy
