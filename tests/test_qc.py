@@ -11,10 +11,12 @@ class QCTestCase(unittest.TestCase):
         t = outer_product(x, y)
         self.assertEqual("[ 8 12  6 12 18  9]", str(t.ravel()))
 
-    def test_qubits_to_vector(self):
-        v = qubits_to_vector("011")
+    def test_bits_to_vector(self):
+        v = bits_to_vector("011")
+        self.assertEqual(3, bits_to_int("011"))
         self.assertEqual("[0 0 0 1 0 0 0 0]", str(v))
-        v = qubits_to_vector("111")
+        v = bits_to_vector("111")
+        self.assertEqual(7, bits_to_int("111"))
         self.assertEqual("[0 0 0 0 0 0 0 1]", str(v))
 
     def test_tofoli(self):

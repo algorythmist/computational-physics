@@ -87,3 +87,28 @@ class QCProblemsTestCase(unittest.TestCase):
     def test_problem_5_4_3(self):
         self.assertTrue(is_unit_matrix(PAULI_X @ PAULI_X))
         self.assertTrue(is_unit_matrix(PAULI_Y @ PAULI_Y))
+
+    def test_problem_6_1_3(self):
+        def f1(x: int):
+            return 0
+
+        def f2(x: int):
+            return 1
+
+        def f3(x: int):
+            return x
+
+        def f4(x: int):
+            return 1-x
+
+        Uf1 = build_Uf(f1)
+        self.assertTrue(is_unit_matrix(Uf1))
+
+        Uf2 = build_Uf(f2)
+        print(Uf2)
+
+        Uf3 = build_Uf(f3)
+        print(Uf3)
+
+        Uf4 = build_Uf(f4)
+        print(Uf4)

@@ -34,15 +34,20 @@ def normalize(v):
     return v / norm(v)
 
 
-def qubits_to_vector(qubit_string):
-    n = len(qubit_string) - 1
-    number = 0
-    for b in qubit_string:
-        number += (int(b) << n)
-        n -= 1
-    v = np.zeros((2 << len(qubit_string) - 1)).astype(int)
+def bits_to_vector(bit_string):
+    number = bits_to_int(bit_string)
+    v = np.zeros((2 << len(bit_string) - 1)).astype(int)
     v[number] = 1
     return v
+
+
+def bits_to_int(bit_string):
+    n = len(bit_string) - 1
+    number = 0
+    for b in bit_string:
+        number += (int(b) << n)
+        n -= 1
+    return number
 
 
 def state_from_bloch(theta, phi):
@@ -139,3 +144,18 @@ def is_unit_matrix(u):
             return False
     return True
 
+def build_Uf(f):
+    Uf = np.zeros(shape=(4,4), dtype=int)
+    if f(0) == 0:
+        Uf[0, 0] = 1
+        Uf[1, 1] = 1
+    else:
+        Uf[0, 1] = 1
+        Uf[1, 0] = 1
+    if f(1) == 0:
+        Uf[2, 2] = 1
+        Uf[3, 3] = 1
+    else:
+        Uf[2, 3] = 1
+        Uf[3, 2] = 1
+    return Uf
