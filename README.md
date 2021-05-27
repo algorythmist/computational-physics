@@ -34,9 +34,3 @@
 >>
 >> ipython kernel install --name "computational-physics" --user
 
-
-
-
-```math
-SE = \frac{\sigma}{\sqrt{n}}
-```
