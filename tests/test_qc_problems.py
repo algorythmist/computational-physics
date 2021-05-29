@@ -3,6 +3,23 @@ import unittest
 from qc import *
 
 
+# functions for Deutsch's algorithm
+def constant0(x: int):
+    return 0
+
+
+def constant1(x: int):
+    return 1
+
+
+def balanced1(x: int):
+    return x
+
+
+def balanced2(x: int):
+    return 1 - x
+
+
 class QCProblemsTestCase(unittest.TestCase):
 
     def test_problem_2_7_1(self):
@@ -44,8 +61,8 @@ class QCProblemsTestCase(unittest.TestCase):
         self.assertTrue(np.array_equal(AB.T, AtBt))
 
     def test_example_4_1_4(self):
-        probs = probabilities([3-4j, 7+2j])
-        self.assertAlmostEqual(25./78., probs[0], 5)
+        probs = probabilities([3 - 4j, 7 + 2j])
+        self.assertAlmostEqual(25. / 78., probs[0], 5)
         self.assertAlmostEqual(53. / 78., probs[1], 5)
 
     def test_problem_5_1_2(self):
@@ -62,7 +79,7 @@ class QCProblemsTestCase(unittest.TestCase):
         self.assertEqual("[0 1 0 0]", str(q01.ravel()))
         q11 = outer_product(q1, q1)
         self.assertEqual("[0 0 0 1]", str(q11.ravel()))
-        result = 3*q01+2*q11
+        result = 3 * q01 + 2 * q11
         self.assertEqual("[0 3 0 2]", str(result.ravel()))
 
     def test_problem_5_3_1(self):
@@ -89,26 +106,20 @@ class QCProblemsTestCase(unittest.TestCase):
         self.assertTrue(is_unit_matrix(PAULI_Y @ PAULI_Y))
 
     def test_problem_6_1_3(self):
-        def f1(x: int):
-            return 0
-
-        def f2(x: int):
-            return 1
-
-        def f3(x: int):
-            return x
-
-        def f4(x: int):
-            return 1-x
-
-        Uf1 = build_Uf(f1)
+        Uf1 = build_Uf(constant0)
         self.assertTrue(is_unit_matrix(Uf1))
 
-        Uf2 = build_Uf(f2)
+        Uf2 = build_Uf(constant1)
         print(Uf2)
 
-        Uf3 = build_Uf(f3)
-        print(Uf3)
+        Uf3 = build_Uf(balanced1)
+        self.assertTrue(np.array_equal(Uf3, CNOT))
 
-        Uf4 = build_Uf(f4)
+        Uf4 = build_Uf(balanced2)
         print(Uf4)
+
+    def test_problem_6_1_5_6(self):
+        self.assertEqual('BALANCED', deutsch(balanced1))
+        self.assertEqual('BALANCED', deutsch(balanced2))
+        self.assertEqual('CONSTANT', deutsch(constant0))
+        self.assertEqual('CONSTANT', deutsch(constant1))
