@@ -1,6 +1,7 @@
 import unittest
 
-from qc import *
+from qc.qc import *
+from qc.gates import *
 
 
 # functions for Deutsch's algorithm

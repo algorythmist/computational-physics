@@ -1,6 +1,7 @@
 import unittest
 
-from qc import *
+from qc.qc import *
+from qc.gates import *
 
 
 class QCTestCase(unittest.TestCase):
@@ -19,15 +20,6 @@ class QCTestCase(unittest.TestCase):
         self.assertEqual(7, bits_to_int("111"))
         self.assertEqual("[0 0 0 0 0 0 0 1]", str(v))
 
-    def test_tofoli(self):
-        t = tofoli()
-        u = t @ t
-        self.is_unit_matrix(u)
-
-    def test_fredkin(self):
-        f = fredkin()
-        u = f @ f
-        self.is_unit_matrix(u)
 
     def test_state_from_bloch(self):
         theta = np.pi / 4
@@ -35,9 +27,5 @@ class QCTestCase(unittest.TestCase):
         s = state_from_bloch(theta, phi)
         self.assertEqual("[0.70710678+0.j  0.5       +0.5j]", str(s))
 
-    def is_unit_matrix(self, u):
-        for i, j in np.ndindex(u.shape):
-            if i == j:
-                self.assertEqual(1., u[i, j])
-            else:
-                self.assertEqual(0., u[i, j])
+
+

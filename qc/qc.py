@@ -2,16 +2,23 @@ import numpy as np
 from numpy import sin, cos, exp
 from scipy.linalg import kron
 
+from qc.gates import hadamard, identity
+
 
 # OPERATIONS
 
 
-def inner(v1, v2):
-    return np.vdot(v1, v2)
-
-
 def vector(list):
+    """
+    Convert an array or list to a column vector
+    :param list: the array or list
+    :return: a column vector
+    """
     return np.array([list]).T
+
+
+def inner_product(v1, v2):
+    return np.vdot(v1, v2)
 
 
 def outer_product(m1, m2):
@@ -22,7 +29,7 @@ def outer_product(m1, m2):
 
 def norm(v):
     v = np.array(v)
-    return np.real(np.sqrt(inner(v, v)))
+    return np.real(np.sqrt(inner_product(v, v)))
 
 
 def distance(v1, v2):
@@ -34,14 +41,24 @@ def normalize(v):
     return v / norm(v)
 
 
-def bits_to_vector(bit_string):
+def bits_to_vector(bit_string: str):
+    """
+    Convert a bit string of length n to a vector of length 2^n
+    :param bit_string:
+    :return:
+    """
     number = bits_to_int(bit_string)
     v = np.zeros((2 << len(bit_string) - 1)).astype(int)
     v[number] = 1
     return v
 
 
-def bits_to_int(bit_string):
+def bits_to_int(bit_string: str) -> int:
+    """
+    Convert a bit string to the an integer
+    :param bit_string:
+    :return:
+    """
     n = len(bit_string) - 1
     number = 0
     for b in bit_string:
@@ -69,72 +86,6 @@ def probabilities(state):
     """
     return [np.real(np.vdot(x, x)) for x in normalize(state)]
 
-# GATES
-CNOT = np.array([
-    [1, 0, 0, 0],
-    [0, 1, 0, 0],
-    [0, 0, 0, 1],
-    [0, 0, 1, 0]
-])
-
-PAULI_X = np.matrix([[0, 1], [1, 0]])
-PAULI_Y = np.matrix([[0, -1j], [1j, 0]])
-PAULI_Z = np.matrix([[1, 0], [0, -1]])
-
-HADAMARD = np.matrix([[1, 1], [1, -1]]) / np.sqrt(2)
-
-
-def identity(dimension):
-    return np.diag(np.ones(dimension))
-
-
-def tofoli():
-    tof = np.diag(np.ones(8))
-    tof[6, 6] = 0.
-    tof[6, 7] = 1.
-    tof[7, 6] = 1.
-    tof[7, 7] = 0.
-    return tof
-
-
-def fredkin():
-    fred = np.diag(np.ones(8))
-    fred[5, 5] = 0.
-    fred[5, 6] = 1.
-    fred[6, 5] = 1.
-    fred[6, 6] = 0.
-    return fred
-
-
-def rotation_around_x(theta):
-    return np.matrix([[cos(theta / 2), -1j * sin(theta / 2)],
-                      [-1j * sin(theta / 2), cos(theta / 2)]])
-
-
-def rotation_around_y(theta):
-    return np.matrix([[cos(theta / 2), -sin(theta / 2)],
-                      [sin(theta / 2), cos(theta / 2)]])
-
-
-def rotation_around_z(theta):
-    return np.matrix([[exp(-1j * theta / 2), 0],
-                      [0, exp(1j * theta / 2)]])
-
-
-def rotation_around_axis(axis, theta):
-    if len(axis) != 3:
-        raise ValueError("Axis must be a 3D vector")
-    product = axis[0] * PAULI_X + axis[1] * PAULI_Y + axis[2] * PAULI_Z
-    return identity(2) * cos(theta / 2) - 1j * sin(theta / 2) * product
-
-
-def phase_shift(theta):
-    return np.matrix([[1, 0]], [0, exp(1j * theta)])
-
-
-def hadamard():
-    return np.array([[1, 1], [1, -1]])/np.sqrt(2)
-
 
 def is_unit_matrix(u):
     for i, j in np.ndindex(u.shape):
@@ -144,8 +95,9 @@ def is_unit_matrix(u):
             return False
     return True
 
+
 def build_Uf(f):
-    Uf = np.zeros(shape=(4,4), dtype=int)
+    Uf = np.zeros(shape=(4, 4), dtype=int)
     if f(0) == 0:
         Uf[0, 0] = 1
         Uf[1, 1] = 1
