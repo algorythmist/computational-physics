@@ -1,6 +1,7 @@
 import numpy as np
 from numpy import exp, sin, cos
 
+
 # GATES
 CNOT = np.array([
     [1, 0, 0, 0],
@@ -12,6 +13,8 @@ CNOT = np.array([
 PAULI_X = np.matrix([[0, 1], [1, 0]])
 PAULI_Y = np.matrix([[0, -1j], [1j, 0]])
 PAULI_Z = np.matrix([[1, 0], [0, -1]])
+
+NOT = PAULI_X
 
 HADAMARD = np.matrix([[1, 1], [1, -1]]) / np.sqrt(2)
 

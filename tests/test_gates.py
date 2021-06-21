@@ -16,7 +16,7 @@ class GatesTestCase(unittest.TestCase):
         u = f @ f
         self.assertTrue(is_unit_matrix(u))
 
-    def test_bit_bit_inner_product(self):
+    def test_bit_inner_product(self):
         self.assertEqual(0, bit_inner_product("000", "000"))
         self.assertEqual(1, bit_inner_product("01", "01"))
         self.assertEqual(1, bit_inner_product("111", "111"))
