@@ -8,7 +8,7 @@ setuptools.setup(
     license='MIT',
     author='Dimitri Papaioannou',
     author_email='dimitri@tecacet.com',
-    description='Financial Toolbox',
+    description='Computational Physics Problems',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Programming Language :: Python :: 3',
