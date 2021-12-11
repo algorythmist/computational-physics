@@ -3,6 +3,9 @@ import scipy.linalg as la
 import scipy.sparse as sp
 import scipy.sparse.linalg as sla
 
+import ffc
+
+print(ffc.__version__)
 
 def solve_laplace_1d(constant, u0, u1, N=20):
     """
