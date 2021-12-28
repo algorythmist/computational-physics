@@ -6,7 +6,6 @@
 
 [Introduction to Quantum Mechanics - Griffiths](griffith.ipynb) - Some visualization from this book
 
-[Roger Penrose - The Road to Reality](reality.ipynb)
 
 ## Setup
 
