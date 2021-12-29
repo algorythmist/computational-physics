@@ -32,4 +32,4 @@
 >> conda install --file requirements.txt
 >>
 >> ipython kernel install --name "computational-physics" --user
-
+>> jupyter nbextension enable --py widgetsnbextension
