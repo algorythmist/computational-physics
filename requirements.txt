@@ -1,6 +1,7 @@
+geomstats
 imageio
 ipywidgets
-jupyterlab
+jupyter
 matplotlib
 numpy
 pandas
