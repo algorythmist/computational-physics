@@ -4,7 +4,7 @@
 
 [Ordinary Differential Equaltions](odes.ipynb) - Solutions to Physics problems by ODEs
 
-[Introduction to Quantum Mechanics - Griffiths](griffith.ipynb) - Some visualization from this book
+[Introduction to Quantum Mechanics - Griffiths](../road2reality/QM/griffith.ipynb) - Some visualization from this book
 
 
 ## Setup
