@@ -3,6 +3,7 @@ imageio
 ipywidgets
 jupyter
 matplotlib
+notebook-as-pdf
 numpy
 pandas
 plotly
