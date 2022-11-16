@@ -1,3 +1,4 @@
+einsteinpy
 geomstats
 imageio
 ipywidgets
