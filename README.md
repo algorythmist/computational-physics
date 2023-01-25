@@ -36,3 +36,16 @@
 >> jupyter nbextension enable --py widgetsnbextension
 >>
 >> conda install -c conda-forge jupyter_contrib_nbextensions
+
+### Start Jupyter
+
+The first time, install the jupyter kernel
+
+```commandline
+ipython kernel install --name "differential-geometry" --user
+```
+
+Then start the notebook
+
+```commandline
+jupyter notebook
