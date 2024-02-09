@@ -11,3 +11,5 @@ qtconsole
 scipy
 sympy
 kaleido
+pytest
+
