@@ -10,3 +10,4 @@ plotly
 qtconsole
 scipy
 sympy
+kaleido
